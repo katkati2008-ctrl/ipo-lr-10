@@ -27,12 +27,12 @@ def isCollisionRect(rectangles):
    x1,y1=rect1[0]
    x2,y2=rect1[1]
    if not (x1<x2 and y1<y2):
-       raise RectCorrectError("1й треугольник некорректный") 
+       raise RectCorrectError("1й прямоугольник некорректный") 
    rect2 = rectangles[1]
    x3,y3=rect2[0]
    x4,y4=rect2[1]
    if not (x3<x4 and y3<y4):
-       raise RectCorrectError("2й треугольник некорректный") 
+       raise RectCorrectError("2й прямоугольник некорректный") 
    if x1 >= x4 or x2 <= x3:
         return False
 
@@ -70,3 +70,18 @@ except ValueError :
     print("Ошибка: вводите только числа. Попробуйте снова:")
 rectangles=rect1,rect2
 print(isCollisionRect(rectangles))'''
+
+#задание 4
+class ValueError(Exception):
+    pass
+def intersectionAreaRect(rect1,rect2):
+   
+   x1,y1=rect1[0]
+   x2,y2=rect1[1]
+   if not (x1<x2 and y1<y2):
+       raise ValueError("1й прямоугольник некорректный") 
+
+   x3,y3=rect2[0]
+   x4,y4=rect2[1]
+   if not (x3<x4 and y3<y4):
+       raise ValueError("2й прямоугольник некорректный") 
