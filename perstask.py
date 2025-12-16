@@ -3,6 +3,7 @@ def isCorrectRect(points):
     [(x1, y1), (x2, y2)] = points
     return x1 < x2 and y1 < y2
 
+#Пример использования функции
 '''points = []
 try:
     points = []
@@ -16,7 +17,7 @@ try:
     y2 = float(input("y2: "))
     points.append((x2, y2))
 except ValueError :
-    print("Ошибка: вводите только числа. Попробуйте снова:")
+    print("Ошибка: вводите только числа. Попробуйте снова")
 print(isCorrectRect(points))'''
 
 #задание 3
@@ -41,6 +42,7 @@ def isCollisionRect(rectangles):
 
    return True
 
+#Пример использования функции
 '''try:
     rect1 = []
     print("Введите координаты левого нижнего угла первого прямоугольника:")
@@ -53,7 +55,7 @@ def isCollisionRect(rectangles):
     y2 = float(input("y2: "))
     rect1.append((x2, y2))
 except ValueError :
-    print("Ошибка: вводите только числа. Попробуйте снова:")
+    print("Ошибка: вводите только числа. Попробуйте снова")
 
 try:
     rect2 = []
@@ -67,6 +69,71 @@ try:
     y4 = float(input("y4: "))
     rect2.append((x4, y4))
 except ValueError :
-    print("Ошибка: вводите только числа. Попробуйте снова:")
+    print("Ошибка: вводите только числа. Попробуйте снова")
 rectangles=rect1,rect2
 print(isCollisionRect(rectangles))'''
+
+#задание 5
+class RectCorrectError(Exception):
+    pass
+def intersectionAreaMultiRect(rectangles):
+      if not rectangles:
+        return 0
+    
+      if len(rectangles) == 1:
+        rect = rectangles[0]
+        x1, y1 = rect[0]
+        x2, y2 = rect[1]
+        return (x2 - x1) * (y2 - y1)
+    
+      for i, rect in enumerate(rectangles, 1):
+        x1, y1 = rect[0]
+        x2, y2 = rect[1]
+        if x1 >= x2 or y1 >= y2:
+            raise RectCorrectError(f"{i} прямоугольник не существует")
+    
+      current_x1, current_y1 = rectangles[0][0]
+      current_x2, current_y2 = rectangles[0][1]
+    
+
+      for i in range(1, len(rectangles)):
+        x1, y1 = rectangles[i][0]
+        x2, y2 = rectangles[i][1]
+        
+    
+        new_x1 = max(current_x1, x1)
+        new_x2 = min(current_x2, x2)
+        new_y1 = max(current_y1, y1)
+        new_y2 = min(current_y2, y2)
+
+        if new_x1 >= new_x2 or new_y1 >= new_y2:
+            return 0  
+        
+        current_x1, current_y1 = new_x1, new_y1
+        current_x2, current_y_up = new_x2, new_y2
+    
+      width = current_x2 - current_x1
+      height = current_y_up - current_y1
+      return width * height
+
+#Пример использования функции
+'''rectangles = []
+try:
+        
+        for i in range(4):
+            print(f"\nПрямоугольник {i+1}:")
+            left_down_x = float(input("  Введите координату x левого нижнего угла: "))
+            left_down_y = float(input("  Введите координату y левого нижнего угла: "))
+            right_up_x = float(input("  Введите координату x правого верхнего угла: "))
+            right_up_y = float(input("  Введите координату y правого верхнего угла: "))
+            
+            rectangles.append([(left_down_x, left_down_y), (right_up_x, right_up_y)])
+        
+        area = intersectionAreaMultiRect(rectangles)
+        
+        if area > 0:
+            print(f"Площадь пересечения всех прямоугольников: {area}")
+        else:
+            print(f"Прямоугольники не имеют общего пересечения")
+except ValueError:
+    print("Ошибка: вводите только числа. Попробуйте снова")'''
