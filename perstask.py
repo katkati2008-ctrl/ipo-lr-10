@@ -106,7 +106,8 @@ def intersectionAreaRect(rect1,rect2):
        return 0
    else:
        return area
-
+       
+#Пример использования функции
 '''try:
     rect1 = []
     print("Введите координаты левого нижнего угла первого прямоугольника:")
