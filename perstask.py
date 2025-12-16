@@ -33,6 +33,7 @@ def isCollisionRect(rectangles):
    x4,y4=rect2[1]
    if not (x3<x4 and y3<y4):
        raise RectCorrectError("2й прямоугольник некорректный") 
+   
    if x1 >= x4 or x2 <= x3:
         return False
 
@@ -85,3 +86,51 @@ def intersectionAreaRect(rect1,rect2):
    x4,y4=rect2[1]
    if not (x3<x4 and y3<y4):
        raise ValueError("2й прямоугольник некорректный") 
+   if x1 >= x4 or x2 <= x3:
+        return 0
+
+   if y1 >= y4 or y2 <= y3:
+        return 0
+   
+   x_left = max(x1, x3)
+   x_right = min(x2, x4)
+   y_bottom = max(y1, y3)
+   y_top = min(y2, y4)
+   width=x_right-x_left
+   height=y_top-y_bottom
+   area=width*height
+
+   if width<=0 or height<=0:
+       return 0
+   else:
+       return area
+
+'''try:
+    rect1 = []
+    print("Введите координаты левого нижнего угла первого прямоугольника:")
+    x1 = float(input("x1: "))
+    y1 = float(input("y1: "))
+    rect1.append((x1, y1))
+
+    print("Введите координаты правого верхнего угла первого прямоугольника:")
+    x2 = float(input("x2: "))
+    y2 = float(input("y2: "))
+    rect1.append((x2, y2))
+except ValueError :
+    print("Ошибка: вводите только числа. Попробуйте снова:")
+
+try:
+    rect2 = []
+    print("Введите координаты левого нижнего угла второго прямоугольника:")
+    x3 = float(input("x3: "))
+    y3 = float(input("y3: "))
+    rect2.append((x3, y3))
+
+    print("Введите координаты правого верхнего угла второго прямоугольника:")
+    x4 = float(input("x4: "))
+    y4 = float(input("y4: "))
+    rect2.append((x4, y4))
+except ValueError :
+    print("Ошибка: вводите только числа. Попробуйте снова:")
+
+print(f"Площадь пересечения двух прямоугольников: {intersectionAreaRect(rect1,rect2)} ")'''
