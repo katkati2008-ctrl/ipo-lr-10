@@ -17,7 +17,7 @@ try:
     y2 = float(input("y2: "))
     points.append((x2, y2))
 except ValueError :
-    print("Ошибка: вводите только числа. Попробуйте снова")
+    print("Вводите только числа")
 print(isCorrectRect(points))'''
 
 #задание 3
@@ -56,7 +56,7 @@ def isCollisionRect(rectangles):
     y2 = float(input("y2: "))
     rect1.append((x2, y2))
 except ValueError :
-    print("Ошибка: вводите только числа. Попробуйте снова")
+    print("Вводите только числа")
 
 try:
     rect2 = []
@@ -70,7 +70,7 @@ try:
     y4 = float(input("y4: "))
     rect2.append((x4, y4))
 except ValueError :
-    print("Ошибка: вводите только числа. Попробуйте снова")
+    print("Вводите только числа")
 rectangles=rect1,rect2
 print(isCollisionRect(rectangles))'''
 
@@ -120,7 +120,7 @@ def intersectionAreaRect(rect1,rect2):
     y2 = float(input("y2: "))
     rect1.append((x2, y2))
 except ValueError :
-    print("Ошибка: вводите только числа. Попробуйте снова:")
+    print("Вводите только числа")
 
 try:
     rect2 = []
@@ -134,7 +134,7 @@ try:
     y4 = float(input("y4: "))
     rect2.append((x4, y4))
 except ValueError :
-    print("Ошибка: вводите только числа. Попробуйте снова:")
+    print("Вводите только числа")
 
 print(f"Площадь пересечения двух прямоугольников: {intersectionAreaRect(rect1,rect2)} ")'''
 
@@ -202,5 +202,5 @@ try:
         else:
             print(f"Прямоугольники не имеют общего пересечения")
 except ValueError:
-    print("Ошибка: вводите только числа. Попробуйте снова")'''
+    print("Вводите только числа")'''
 
